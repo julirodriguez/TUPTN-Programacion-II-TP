@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar comida</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <h1>Agregar comida</h1>
+    </header>
+
+    <main class="container">
+        <form id="mealForm" class="form-container">
+
+            <!-- Nombre -->
+            <div class="form-group">
+                <label>Nombre de la comida</label>
+                <input type="text" id="nombre">
+                <span class="error">Campo obligatorio</span>
+            </div>
+
+            <!-- Día --> 
+            <div class="form-group"> 
+                <label>Día</label> 
+                <select id="dia"> 
+                    <option value="">Seleccionar</option> 
+                    <option value="lunes">Lunes</option> 
+                    <option value="martes">Martes</option> 
+                    <option value="miercoles">Miércoles</option> 
+                    <option value="jueves">Jueves</option> 
+                    <option value="viernes">Viernes</option> 
+                    <option value="sabado">Sábado</option> 
+                    <option value="domingo">Domingo</option> 
+                </select> 
+                <span class="error">Seleccioná un día</span> 
+            </div>
+
+            <!-- Tipo -->
+            <div class="form-group"> 
+                <label>Tipo</label> 
+                <select id="tipo"> 
+                    <option value="">Seleccionar</option> 
+                    <option value="Desayuno">Desayuno</option> 
+                    <option value="Almuerzo">Almuerzo</option> 
+                    <option value="Cena">Cena</option> 
+                </select> 
+                <span class="error">Seleccioná un tipo</span> 
+            </div>
+
+            <!-- Ingredientes -->
+            <div class = "form-group">
+                <label>Ingredientes (separados por coma)</label>
+                <input type="text" id="ingredientes">
+                <span class="error">Ingresá al menos un ingrediente</span>
+            </div>
+            
+            <!-- Fecha-->
+            <div class="form-group">
+                <label>Fecha</label>
+                <input type="date" id="fecha">
+                <span class="error">Seleccioná una fecha</span>
+            </div>
+
+            <!-- Checkbox -->
+            <div class="form-group">
+                <label>
+                <input type="checkbox" id="veg"> Vegetariano
+                </label>
+            </div>
+
+            <!-- Radio -->
+            <div class="form-group">
+                <label>Dificultad</label>
+
+                <label><input type="radio" name="dif" value="facil">Fácil</label>
+                <label><input type="radio" name="dif" value="media">Media</label>
+                <label><input type="radio" name="dif" value="dificil">Difícil</label>
+                
+                <span class="error">Seleccioná dificultad</span>
+            </div>
+
+            <button class="btn primary" type="submit">Guardar</button>
+        </form>
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="index.html">Inicio</a>
+        <a href="planner1.html">Planificador</a>
+        <a href="compras.html">Compras</a>
+    </nav>
+
+    <script src="js/storage.js"></script>
+    <script src="js/formulario.js" defer></script>
+</body>
+
+</html>
