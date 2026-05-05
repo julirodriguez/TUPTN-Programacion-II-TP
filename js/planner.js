@@ -1,0 +1,86 @@
+const recetas = {
+  "Desayuno": ["café", "pan", "manteca"],
+  "Almuerzo": ["pollo", "arroz"],
+  "Cena": ["lechuga", "tomate"]
+};
+
+function renderizarPlanner() {
+  const data = getData()
+  const plan = data.plan
+
+  document.querySelectorAll(".day").forEach(dayElement => {
+    const day = dayElement.dataset.day
+    const mealsContainer = dayElement.querySelector(".meals")
+
+    mealsContainer.innerHTML = ""
+
+    plan[day].forEach((comida, index) => {
+      const div = document.createElement("div")
+      div.classList.add("meal")
+
+      div.innerHTML = `
+        <span>${comida.nombre}</span>
+        <button>✖️</button>
+      `
+
+      div.querySelector("button").addEventListener("click", () => {
+        if (confirm("¿Eliminar esta comida?")) {
+          eliminarComida(day, index)
+        }
+      })
+
+      mealsContainer.appendChild(div)
+    })
+  })
+}
+
+function eliminarComida(day, index) {
+  const data = getData()
+  data.plan[day].splice(index, 1)
+  saveData(data)
+
+  renderizarPlanner()
+  mostrarCompras()
+}
+
+function initPlanner() {
+  if (!document.querySelector(".day")) return
+
+  const data = getData()
+
+  document.querySelectorAll(".add-meal").forEach(button => {
+    button.addEventListener("click", function () {
+      const day = this.closest(".day").dataset.day
+      let comidasDelDia = data.plan[day]
+
+      if (comidasDelDia.length >= 5) {
+        alert("Máximo 5 comidas por día.")
+        return
+      }
+
+      let option = prompt("1.Desayuno 2.Almuerzo 3.Cena 4.Personalizada")
+
+      let tipo = ["", "Desayuno", "Almuerzo", "Cena", "Personalizada"][option]
+
+      if (!tipo) return alert("Opción inválida")
+
+      if (tipo === "Personalizada") {
+        let nombre = prompt("Ingrese la comida:")
+        if (!nombre) return
+        tipo = "Personalizada: " + nombre
+      }
+
+      comidasDelDia.push({
+        nombre: tipo,
+        ingredientes: recetas[tipo] || []
+      })
+
+      saveData(data)
+
+      renderizarPlanner()
+      mostrarCompras()
+    })
+  })
+
+  renderizarPlanner()
+}

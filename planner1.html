@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Planificador de comidas</title>
+  <link rel="stylesheet" href="styles.css">
+  
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-left">
+    <button>☰</button>
+    <h1>Planificador de comidas</h1>
+  </div>
+  <button>📅</button>
+</header>
+
+<main class="container">
+
+  <!-- SUMMARY -->
+  <section class="summary">
+    <div class="summary-top">
+      <div>
+        <span class="label">Objetivo Semanal</span>
+        <h2>Nutrition Summary</h2>
+
+    <div class="summary-grid">
+      <div class="card"><p>Calorias</p><h3>1850 kcal</h3></div>
+      <div class="card"><p>Proteina</p><h3>120g</h3></div>
+      <div class="card"><p>Carbohidratos</p><h3>210g</h3></div>
+      <div class="card"><p>Grasas</p><h3>65g</h3></div>
+    </div>
+
+    <div class="progress">
+      <div class="progress-bar"></div>
+    </div>
+  </section>
+
+  <!-- DIAS -->
+  <section class="days">
+
+    <article class="day" data-day="lunes">
+        <h3>Lunes</h3>
+        <div class="meals"></div>
+        <button class="add-meal">+ Agregar comida</button>
+    </article>
+
+    <article class="day" data-day="martes">
+        <h3>Martes</h3>
+        <div class="meals"></div>
+        <button class="add-meal">+ Agregar comida</button>
+    </article>
+
+    <article class="day" data-day="miercoles">
+        <h3>Miércoles</h3>
+        <div class="meals"></div>
+        <button class="add-meal">+ Agregar comida</button>
+    </article>
+
+    <article class="day" data-day="jueves">
+        <h3>Jueves</h3>
+        <div class="meals"></div>
+        <button class="add-meal">+ Agregar comida</button>
+    </article>
+
+    <article class="day" data-day="viernes">
+        <h3>Viernes</h3>
+        <div class="meals"></div>
+        <button class="add-meal">+ Agregar comida</button>
+    </article>
+
+    <article class="day" data-day="sabado">
+        <h3>Sábado</h3>
+        <div class="meals"></div>
+        <button class="add-meal">+ Agregar comida</button>
+    </article>
+
+    <article class="day" data-day="domingo">
+        <h3>Domingo</h3>
+        <div class="meals"></div>
+        <button class="add-meal">+ Agregar comida</button>
+    </article>
+
+  </section>
+
+</main>
+
+<!-- NAV -->
+<nav class="bottom-nav">
+  <a href="index.html">Inicio</a>
+  <a href="planner1.html" class="active">Planificador</a>
+  <a href="compras.html">Compras</a>
+</nav>
+
+<footer class="footer">
+
+</footer>
+<script src="js/storage.js"></script>
+<script src="js/planner.js"></script>
+<script src="js/compras.js"></script>
+<script src="js/main.js"></script>
+</body>
+
+</html>

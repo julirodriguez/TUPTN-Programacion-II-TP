@@ -1,0 +1,279 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BASE */
+body {
+  font-family: 'Be Vietnam Pro', Arial, sans-serif;
+  background: #f5f5f5;
+  color: #222;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 80px 20px 100px;
+}
+
+/* HEADER */
+.header,
+.topbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background: #2C5F34;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar,
+.profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* TEXT */
+.label,
+.date {
+  font-size: 12px;
+  color: gray;
+}
+
+/* BUTTONS */
+.btn {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.primary {
+  background: #2C5F34;
+  color: white;
+}
+
+.secondary {
+  background: #b0f1cc;
+}
+
+/* SUMMARY */
+.summary {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.summary-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.status {
+  background: #d8f3dc;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.card {
+  background: #eee;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* PROGRESS */
+.progress {
+  margin-top: 10px;
+  height: 6px;
+  background: #ddd;
+  border-radius: 10px;
+}
+
+.progress-bar {
+  width: 75%;
+  height: 100%;
+  background: #2C5F34;
+  border-radius: 10px;
+}
+
+/* DAYS */
+.days {
+  display: grid;
+  gap: 20px;
+}
+
+.day {
+  background: white;
+  padding: 15px;
+  border-left: 4px solid #ccc;
+  border-radius: 10px;
+}
+
+.day.active {
+  border-color: #2C5F34;
+}
+
+/* MEALS */
+.meal,
+.meal-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  background: #fafafa;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.meal img,
+.meal-card img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.meal input {
+  flex: 1;
+  padding: 5px;
+}
+
+.meal button {
+  margin-left: auto;
+}
+
+.meal-info {
+  padding: 5px;
+}
+
+/* EMPTY STATE */
+.empty-box {
+  margin-top: 10px;
+  padding: 20px;
+  border: 2px dashed #ccc;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* ADD BUTTON */
+.add-meal {
+  margin-top: 10px;
+  padding: 8px;
+  border: none;
+  background: #2C5F34;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* CATEGORY (GROCERY) */
+.category {
+  margin-bottom: 20px;
+}
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.badge {
+  background: #ddd;
+  padding: 3px 8px;
+  border-radius: 10px;
+}
+
+/* LIST */
+.list {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.item-info {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.qty {
+  font-size: 12px;
+  background: #eee;
+  padding: 3px 6px;
+  border-radius: 6px;
+}
+
+/* DONE */
+.done span {
+  text-decoration: line-through;
+  color: gray;
+}
+
+/* NAV */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.bottom-nav a {
+  text-decoration: none;
+  color: gray;
+}
+
+.bottom-nav .active {
+  color: #2C5F34;
+  font-weight: bold;
+}
+
+/* FAB */
+.fab {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  background: #2C5F34;
+  color: white;
+  padding: 15px;
+  border-radius: 50%;
+  border: none;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 20px;
+}
