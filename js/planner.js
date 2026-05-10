@@ -1,8 +1,8 @@
-const recetas = {
-  "Desayuno": ["café", "pan", "manteca"],
-  "Almuerzo": ["pollo", "arroz"],
-  "Cena": ["lechuga", "tomate"]
-};
+//const recetas = {
+//  "Desayuno": ["café", "pan", "manteca"],
+//  "Almuerzo": ["pollo", "arroz"],
+//  "Cena": ["lechuga", "tomate"]
+//};
 
 function renderizarPlanner() {
   const data = getData()
@@ -34,7 +34,7 @@ function renderizarPlanner() {
 
       // Editar (para dsp)
       div.querySelector(".edit").addEventListener("click", () => {
-        window.location.href = `pages/formulario.html?dia=${day}&index=${index}`;
+        window.location.href = `formulario.html?dia=${day}&index=${index}`;
       })
 
       mealsContainer.appendChild(div)
@@ -52,46 +52,6 @@ function eliminarComida(day, index) {
 }
 
 function initPlanner() {
-  // Solo corre si esta en el planner
-  // if (!document.querySelector(".day")) return
-
-  // const data = getData()
-
-  // document.querySelectorAll(".add-meal").forEach(button => {
-  //   button.addEventListener("click", function () {
-  //     const day = this.closest(".day").dataset.day
-  //     let comidasDelDia = data.plan[day]
-
-  //     if (comidasDelDia.length >= 5) {
-  //       alert("Máximo 5 comidas por día.")
-  //       return
-  //     }
-
-  //     let option = prompt("1.Desayuno 2.Almuerzo 3.Cena 4.Personalizada")
-
-  //     let tipo = ["", "Desayuno", "Almuerzo", "Cena", "Personalizada"][option]
-
-  //     if (!tipo) return alert("Opción inválida")
-
-  //     if (tipo === "Personalizada") {
-  //       let nombre = prompt("Ingrese la comida:")
-  //       if (!nombre) return
-  //       tipo = "Personalizada: " + nombre
-  //     }
-
-  //     comidasDelDia.push({
-  //       nombre: tipo,
-  //       ingredientes: recetas[tipo] || []
-  //     })
-
-  //     saveData(data)
-
-  //     renderizarPlanner()
-  //     mostrarCompras()
-  //   })
-  // })
-
-  if (!document.querySelector(".day")) return
-
+if (!document.querySelector(".day")) return
   renderizarPlanner()
 }

@@ -2,6 +2,36 @@ const form = document.getElementById("mealForm")
 
 const inputs = form.querySelectorAll("input, select")
 
+const params = new URLSearchParams(window.location.search)
+
+const diaEditar = params.get("dia")
+const indexEditar = params.get("index")
+
+const modoEdicion = diaEditar !== null && indexEditar !== null
+
+if (modoEdicion) {
+  const data = getData()
+
+  document.getElementById("form-title").textContent = "Editar comida"
+
+  document.getElementById("dia").disabled = true
+
+  const comida = data.plan[diaEditar][indexEditar]
+
+  document.getElementById("nombre").value = comida.nombre
+  document.getElementById("dia").value = diaEditar
+  document.getElementById("tipo").value = comida.tipo
+  document.getElementById("ingredientes").value = comida.ingredientes.join(", ")
+  document.getElementById("fecha").value = comida.fecha
+  document.getElementById("veg").checked = comida.veg
+
+  const radio = document.querySelector(
+     `input[name="dif"][value="${comida.dificultad}"]`
+  )
+
+  if (radio) radio.checked = true
+}
+
 inputs.forEach(input => {
   input.addEventListener("input", () => validarCampo(input))
 })
@@ -54,21 +84,41 @@ form.addEventListener("submit", (e) => {
   const data = getData()
 
   const nombre = document.getElementById("nombre").value
+
   const dia = document.getElementById("dia").value
+
   const tipo = document.getElementById("tipo").value
-  const ingredientes = document.getElementById("ingredientes").value.split(",")
+
+  const ingredientes = document
+  .getElementById("ingredientes")
+  .value
+  .split(",")
+  .map(i => i.trim())
+
   const fecha = document.getElementById("fecha").value
+
   const veg = document.getElementById("veg").checked
+
   const dificultad = document.querySelector('input[name="dif"]:checked').value
 
-  data.plan[dia].push({
+  const nuevaComida = {
     nombre,
     tipo,
     ingredientes,
     fecha,
     veg,
     dificultad
-  })
+}
+
+  // editar
+  if (modoEdicion) {
+    data.plan[diaEditar][indexEditar] = nuevaComida
+  }
+
+  // crear
+  else {
+    data.plan[dia].push(nuevaComida)
+  }
 
   saveData(data)
 
