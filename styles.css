@@ -247,14 +247,12 @@ select:disabled {
   flex-direction: column;
   font-size: 13px;
 }
-/*
-.meal input {
-  flex: 1;
-  padding: 6px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+
+.meal-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
-*/
 
 /* lista de compras */
 

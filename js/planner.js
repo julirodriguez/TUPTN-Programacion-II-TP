@@ -19,7 +19,10 @@ function renderizarPlanner() {
       div.classList.add("meal")
 
       div.innerHTML = `
-        <span><strong>${comida.nombre}</strong></span>
+        <div class="meal-info">
+          <strong>${comida.nombre}</strong>
+          <small>${comida.tipo} • ${comida.dificultad}</small>
+        </div>
         <div>
           <button class="delete">✖️</button>
           <button class="edit">✏️</button>
@@ -54,4 +57,32 @@ function eliminarComida(day, index) {
 function initPlanner() {
 if (!document.querySelector(".day")) return
   renderizarPlanner()
+}
+
+const clearButton = document.getElementById("clear-planner")
+
+if (clearButton) {
+  clearButton.addEventListener("click", () => {
+    const confirmar = confirm("¿Seguro que querés borrar todas las comidas?")
+
+    if (!confirmar) return
+
+    const data = getData()
+
+    data.plan = {
+      lunes: [],
+      martes: [],
+      miercoles: [],
+      jueves: [],
+      viernes: [],
+      sabado: [],
+      domingo: []
+    }
+
+    saveData(data)
+
+    renderizarPlanner()
+
+    if (window.mostrarCompras) mostrarCompras()
+  })
 }
