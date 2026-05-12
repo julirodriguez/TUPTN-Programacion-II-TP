@@ -10,6 +10,8 @@ body {
   font-family: 'Be Vietnam Pro', Arial, sans-serif;
   background: #f5f5f5;
   color: #222;
+
+  overflow-x: hidden;
 }
 
 /* layout */
@@ -43,11 +45,56 @@ body {
   gap: 10px;
 }
 
+.header h1,
+.topbar h1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .avatar,
 .profile img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+}
+
+/* menu hamburguesa */
+.side-menu {
+  position: fixed;
+  top: 60px;
+  left: -250px;
+
+  width: 220px;
+  height: 100vh;
+
+  background: white;
+
+  padding: 30px 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  box-shadow: 2px 0 10px rgba(0,0,0,0.08);
+
+  transition: left 0.3s ease;
+
+  z-index: 200;
+}
+
+.side-menu a {
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+}
+
+.side-menu a:hover {
+  color: #2C5F34;
+}
+
+.side-menu.open {
+  left: 0;
 }
 
 /* texto */
@@ -131,7 +178,8 @@ body {
 }
 
 .card {
-  background: #f1f1f1;
+  background: #fafafa;
+  border: 1px solid #ececec;
   padding: 18px;
   border-radius: 14px;
 
@@ -467,42 +515,81 @@ select:disabled {
 
 
 /* responsive */
+/* desktop */
+#menu-toggle,
+.side-menu {
+  display: none;
+}
+
 /* tablet */
 @media (max-width: 1024px) {
+  /* menu hamburguesa */
+  #menu-toggle {
+    display: block;
+
+    border: none;
+    background: transparent;
+    color: white;
+
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .side-menu {
+    display: flex;
+  }
+
+  /* layout */
+  .container {
+    padding: 80px 15px 100px;
+  }
+
+  /* stats */
   .summary-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* planner */
   .days {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 
-  .container {
-    padding: 80px 15px 100px;
+  .summary h2 {
+    font-size: 32px;
+  }
+
+  .card h3 {
+    font-size: 28px;
   }
 }
 
+
 /* celular */
 @media (max-width: 480px) {
-    .summary-grid {
+
+  /* stats */
+  .summary-grid {
     grid-template-columns: 1fr;
   }
 
+  /* planner */
   .days {
     grid-template-columns: 1fr;
   }
 
+  /* meals */
   .meal,
   .meal-card {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .meal div {
+  .meal > div:last-child {
     width: 100%;
     justify-content: flex-end;
   }
 
+  /* textos */
   .summary h2 {
     font-size: 28px;
   }
@@ -514,5 +601,10 @@ select:disabled {
   .header h1,
   .topbar h1 {
     font-size: 18px;
+  }
+
+  /* cards */
+  .day {
+    min-height: auto;
   }
 }
