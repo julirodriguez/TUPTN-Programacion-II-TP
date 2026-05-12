@@ -2,9 +2,10 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Planificador de comidas</title>
-  <link rel="stylesheet" href="styles.css">
-  
+  <link rel="icon" type="image/png" href="assets/icons/favicon.png">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
@@ -19,71 +20,82 @@
 
 <main class="container">
 
-  <!-- SUMMARY -->
   <section class="summary">
     <div class="summary-top">
       <div>
-        <span class="label">Objetivo Semanal</span>
-        <h2>Nutrition Summary</h2>
+        <h2>Resumen semanal</h2>
 
-    <div class="summary-grid">
-      <div class="card"><p>Calorias</p><h3>1850 kcal</h3></div>
-      <div class="card"><p>Proteina</p><h3>120g</h3></div>
-      <div class="card"><p>Carbohidratos</p><h3>210g</h3></div>
-      <div class="card"><p>Grasas</p><h3>65g</h3></div>
-    </div>
+      <div class="summary-grid">
+        <div class="card">
+        <p>Total comidas</p>
+        <h3 id="stat-total">0</h3>
+      </div>
 
-    <div class="progress">
-      <div class="progress-bar"></div>
+      <div class="card">
+        <p>Vegetarianas</p>
+        <h3 id="stat-veg">0</h3>
+      </div>
+
+      <div class="card">
+        <p>Ingredientes</p>
+        <h3 id="stat-ing">0</h3>
+      </div>
+
+      <div class="card">
+        <p>Comidas fáciles</p>
+        <h3 id="stat-facil">0</h3>
+      </div>
     </div>
   </section>
 
   <!-- DIAS -->
-  <section class="days">
+  <section class="days-wrapper">
+    <section class="days">
 
-    <article class="day" data-day="lunes">
-        <h3>Lunes</h3>
-        <div class="meals"></div>
-        <a href="formulario.html?dia=lunes" class="add-meal">+ Agregar comida</a>
-    </article>
+      <article class="day" data-day="lunes">
+          <h3>Lunes</h3>
+          <div class="meals"></div>
+          <a href="formulario.html?dia=lunes" class="add-meal">+ Agregar comida</a>
+      </article>
 
-    <article class="day" data-day="martes">
-        <h3>Martes</h3>
-        <div class="meals"></div>
-        <a href="formulario.html?dia=martes" class="add-meal">+ Agregar comida</a>
-    </article>
+      <article class="day" data-day="martes">
+          <h3>Martes</h3>
+          <div class="meals"></div>
+          <a href="formulario.html?dia=martes" class="add-meal">+ Agregar comida</a>
+      </article>
 
-    <article class="day" data-day="miercoles">
-        <h3>Miércoles</h3>
-        <div class="meals"></div>
-        <a href="formulario.html?dia=miercoles" class="add-meal">+ Agregar comida</a>
-    </article>
+      <article class="day" data-day="miercoles">
+          <h3>Miércoles</h3>
+          <div class="meals"></div>
+          <a href="formulario.html?dia=miercoles" class="add-meal">+ Agregar comida</a>
+      </article>
 
-    <article class="day" data-day="jueves">
-        <h3>Jueves</h3>
-        <div class="meals"></div>
-        <a href="formulario.html?dia=jueves" class="add-meal">+ Agregar comida</a>
-    </article>
+      <article class="day" data-day="jueves">
+          <h3>Jueves</h3>
+          <div class="meals"></div>
+          <a href="formulario.html?dia=jueves" class="add-meal">+ Agregar comida</a>
+      </article>
 
-    <article class="day" data-day="viernes">
-        <h3>Viernes</h3>
-        <div class="meals"></div>
-        <a href="formulario.html?dia=viernes" class="add-meal">+ Agregar comida</a>
-    </article>
+      <article class="day" data-day="viernes">
+          <h3>Viernes</h3>
+          <div class="meals"></div>
+          <a href="formulario.html?dia=viernes" class="add-meal">+ Agregar comida</a>
+      </article>
 
-    <article class="day" data-day="sabado">
-        <h3>Sábado</h3>
-        <div class="meals"></div>
-        <a href="formulario.html?dia=sabado" class="add-meal">+ Agregar comida</a>   
-    </article>
+      <article class="day" data-day="sabado">
+          <h3>Sábado</h3>
+          <div class="meals"></div>
+          <a href="formulario.html?dia=sabado" class="add-meal">+ Agregar comida</a>   
+      </article>
 
-    <article class="day" data-day="domingo">
-        <h3>Domingo</h3>
-        <div class="meals"></div>
-        <a href="formulario.html?dia=domingo" class="add-meal">+ Agregar comida</a>
-    </article>
+      <article class="day" data-day="domingo">
+          <h3>Domingo</h3>
+          <div class="meals"></div>
+          <a href="formulario.html?dia=domingo" class="add-meal">+ Agregar comida</a>
+      </article>
 
-  </section>
+    </section>
+  </section>  
 
   <section>
       <button id="clear-planner" class="btn secondary">
