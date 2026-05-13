@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planificador de comidas</title>
+  <link rel="icon" type="image/png" href="assets/icons/favicon.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-left">
+    <button id="menu-toggle">☰</button>
+    <h1>Planificador de comidas</h1>
+    <!-- Boton para dark mode, agregado por JP-->
+    <button id="theme-toggle" class="theme-toggle">
+      🌙
+    </button>
+  </div>
+</header>
+
+<nav class="side-menu" id="side-menu">
+  <a href="index.html">Inicio</a>
+  <a href="planner1.html">Planificador</a>
+  <a href="compras.html">Compras</a>
+</nav>
+
+<main class="container">
+
+  <section class="summary">
+    <div class="summary-top">
+      <div>
+        <h2>Resumen semanal</h2>
+      </div>
+      <div class="summary-grid">
+        <div class="card">
+        <p>Total comidas</p>
+        <h3 id="stat-total">0</h3>
+      </div>
+
+      <div class="card">
+        <p>Vegetarianas</p>
+        <h3 id="stat-vegetariana">0</h3> <!--Joaquin: Agrego este cambio para las cards separadas por caracteristicas-->
+      </div>
+
+      <div class="card">
+        <p>Veganas</p>
+        <h3 id="stat-veganas">0</h3>
+      </div>
+
+      <div class="card">
+        <p>Sin Tacc</p>
+        <h3 id="stat-sin-tacc">0</h3>
+      </div>
+
+      <div class="card">
+        <p>Ingredientes</p>
+        <h3 id="stat-ing">0</h3>
+      </div>
+
+      <div class="card">
+        <p>Comidas fáciles</p>
+        <h3 id="stat-facil">0</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIAS -->
+  <section class="days-wrapper">
+    <section class="days">
+
+      <article class="day" data-day="lunes">
+          <h3>Lunes</h3>
+          <div class="meals"></div>
+          <a href="formulario.html?dia=lunes" class="add-meal">+ Agregar comida</a>
+      </article>
+
+      <article class="day" data-day="martes">
+          <h3>Martes</h3>
+          <div class="meals"></div>
+          <a href="formulario.html?dia=martes" class="add-meal">+ Agregar comida</a>
+      </article>
+
+      <article class="day" data-day="miercoles">
+          <h3>Miércoles</h3>
+          <div class="meals"></div>
+          <a href="formulario.html?dia=miercoles" class="add-meal">+ Agregar comida</a>
+      </article>
+
+      <article class="day" data-day="jueves">
+          <h3>Jueves</h3>
+          <div class="meals"></div>
+          <a href="formulario.html?dia=jueves" class="add-meal">+ Agregar comida</a>
+      </article>
+
+      <article class="day" data-day="viernes">
+          <h3>Viernes</h3>
+          <div class="meals"></div>
+          <a href="formulario.html?dia=viernes" class="add-meal">+ Agregar comida</a>
+      </article>
+
+      <article class="day" data-day="sabado">
+          <h3>Sábado</h3>
+          <div class="meals"></div>
+          <a href="formulario.html?dia=sabado" class="add-meal">+ Agregar comida</a>   
+      </article>
+
+      <article class="day" data-day="domingo">
+          <h3>Domingo</h3>
+          <div class="meals"></div>
+          <a href="formulario.html?dia=domingo" class="add-meal">+ Agregar comida</a>
+      </article>
+
+    </section>
+  </section>  
+
+  <section>
+      <button id="clear-planner" class="btn secondary">
+        Vaciar planner
+    </button>
+  </section>
+
+</main>
+
+  <!-- NAV -->
+  <nav class="bottom-nav">
+    <a href="index.html">Inicio</a>
+    <a href="planner1.html" class="active">Planificador</a>
+    <a href="compras.html">Compras</a>
+    <a href="recetas.html">Recetas</a>
+  </nav>
+
+  <footer class="footer">
+
+  </footer>
+
+  <script src="js/storage.js"></script>
+  <script src="js/planner.js"></script>
+  <script src="js/compras.js"></script>
+  <script src="js/main.js"></script>
+  
+</body>
+
+</html>

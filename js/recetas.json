@@ -1,0 +1,164 @@
+[
+    {
+        "id": 1,
+        "nombre": "Hamburguesa Clásica",
+        "ingredientes": [
+            "Pan de hamburguesa",
+            "Carne vacuna",
+            "Queso cheddar",
+            "Lechuga",
+            "Tomate",
+            "Cebolla",
+            "Ketchup"
+        ],
+        "pasos": [
+            "Cocinar la carne a la plancha",
+            "Tostar el pan",
+            "Agregar queso sobre la carne caliente",
+            "Armar la hamburguesa con vegetales y salsas"
+        ],
+        "caracteristicas": []
+    },
+    {
+        "id": 2,
+        "nombre": "Ensalada César",
+        "ingredientes": [
+            "Lechuga romana",
+            "Queso parmesano",
+            "Crutones",
+            "Pollo grillado",
+            "Aderezo César"
+        ],
+        "pasos": [
+            "Lavar y cortar la lechuga",
+            "Cocinar el pollo",
+            "Mezclar todos los ingredientes",
+            "Agregar el aderezo"
+        ],
+        "caracteristicas": []
+    },
+    {
+        "id": 3,
+        "nombre": "Pizza Margarita",
+        "ingredientes": [
+            "Masa para pizza",
+            "Salsa de tomate",
+            "Mozzarella",
+            "Albahaca",
+            "Aceite de oliva"
+        ],
+        "pasos": [
+            "Estirar la masa",
+            "Agregar salsa y mozzarella",
+            "Hornear",
+            "Agregar albahaca y aceite de oliva"
+        ],
+        "caracteristicas": [
+            "Vegetariano"
+        ]
+    },
+    {
+        "id": 4,
+        "nombre": "Tacos Veganos",
+        "ingredientes": [
+            "Tortillas de maíz",
+            "Porotos negros",
+            "Palta",
+            "Tomate",
+            "Cebolla morada",
+            "Maíz"
+        ],
+        "pasos": [
+            "Calentar las tortillas",
+            "Preparar el relleno con vegetales y porotos",
+            "Armar los tacos",
+            "Servir"
+        ],
+        "caracteristicas": [
+            "Vegano",
+            "Sin TACC"
+        ]
+    },
+    {
+        "id": 5,
+        "nombre": "Milanesa con Puré",
+        "ingredientes": [
+            "Carne vacuna",
+            "Pan rallado",
+            "Huevos",
+            "Papas",
+            "Manteca",
+            "Leche"
+        ],
+        "pasos": [
+            "Empanar la carne",
+            "Freír las milanesas",
+            "Hervir las papas",
+            "Preparar el puré"
+        ],
+        "caracteristicas": []
+    },
+    {
+        "id": 6,
+        "nombre": "Risotto de Hongos",
+        "ingredientes": [
+            "Arroz arborio",
+            "Hongos",
+            "Cebolla",
+            "Caldo de verduras",
+            "Queso parmesano",
+            "Manteca"
+        ],
+        "pasos": [
+            "Saltear cebolla y hongos",
+            "Agregar arroz",
+            "Incorporar caldo lentamente",
+            "Agregar queso y manteca"
+        ],
+        "caracteristicas": [
+            "Vegetariano",
+            "Sin TACC"
+        ]
+    },
+    {
+        "id": 7,
+        "nombre": "Sopa de Lentejas",
+        "ingredientes": [
+            "Lentejas",
+            "Zanahoria",
+            "Papa",
+            "Cebolla",
+            "Caldo de verduras"
+        ],
+        "pasos": [
+            "Cortar los vegetales",
+            "Hervir las lentejas",
+            "Agregar vegetales y caldo",
+            "Cocinar hasta tiernizar"
+        ],
+        "caracteristicas": [
+            "Vegano",
+            "Sin TACC"
+        ]
+    },
+    {
+        "id": 8,
+        "nombre": "Pasta Alfredo",
+        "ingredientes": [
+            "Fideos",
+            "Crema de leche",
+            "Queso parmesano",
+            "Manteca",
+            "Ajo"
+        ],
+        "pasos": [
+            "Hervir la pasta",
+            "Preparar la salsa Alfredo",
+            "Mezclar con la pasta",
+            "Servir caliente"
+        ],
+        "caracteristicas": [
+            "Vegetariano"
+        ]
+    }
+]

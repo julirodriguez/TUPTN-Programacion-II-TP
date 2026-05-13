@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Groceries</title>
+  <link rel="icon" type="image/png" href="assets/icons/favicon.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-left">
+    <button id="menu-toggle">☰</button>
+    <h1>Lista de compras</h1>
+    <!-- Boton para dark mode, agregado por JP-->
+    <button id="theme-toggle" class="theme-toggle">
+      🌙
+    </button>
+  </div>
+</header>
+
+<nav class="side-menu" id="side-menu">
+  <a href="index.html">Inicio</a>
+  <a href="planner1.html">Planificador</a>
+  <a href="compras.html">Compras</a>
+</nav>
+
+<main class="container">
+
+   <!-- Agregado para mostrar la lista de compras-->
+   <div id="lista-compras"></div>
+</main>
+
+<nav class="bottom-nav">
+  <a href="index.html">Inicio</a>
+  <a href="planner1.html">Planificador</a>
+  <a href="compras.html" class="active">Compras</a>
+  <a href="recetas.html">Recetas</a>
+</nav>
+
+<button class="fab">+</button>
+
+<script src="js/storage.js"></script>
+<script src="js/compras.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
