@@ -11,3 +11,31 @@ if (menuButton && sideMenu) {
     sideMenu.classList.toggle("open")
   })
 }
+
+// Cargar tema guardado
+const themeToggle = document.getElementById("theme-toggle");
+
+if(themeToggle){
+
+    // cargar tema guardado
+    if(localStorage.getItem("theme") === "dark"){
+        document.body.classList.add("dark");
+        themeToggle.textContent = "☀️";
+    }
+
+    // cambiar tema
+    themeToggle.addEventListener("click", () => {
+
+        document.body.classList.toggle("dark");
+
+        if(document.body.classList.contains("dark")){
+            localStorage.setItem("theme", "dark");
+            themeToggle.textContent = "☀️";
+        } else {
+            localStorage.setItem("theme", "light");
+            themeToggle.textContent = "🌙";
+        }
+
+    });
+
+}

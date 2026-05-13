@@ -26,7 +26,16 @@ else {
     document.getElementById("dia").value = diaEditar
     document.getElementById("tipo").value = comida.tipo
     document.getElementById("ingredientes").value = comida.ingredientes.join(", ")
-    document.getElementById("veg").checked = comida.veg
+    document.getElementById("recipe-steps").value = comida.receta.join("\n") // Joaquin: Agregue esto para los pasos de las recetas
+
+    document.getElementById("vegetariano").checked = // Joaquin: Agrego/Cambio esto para las caracteristicas de las recetas
+      comida.caracteristicas.includes("Vegetariano");
+
+    document.getElementById("vegano").checked =
+      comida.caracteristicas.includes("Vegano");
+
+    document.getElementById("sin-tacc").checked =
+      comida.caracteristicas.includes("Sin TACC");
 
     const radio = document.querySelector(
       `input[name="dif"][value="${comida.dificultad}"]`
@@ -93,12 +102,35 @@ else {
     const tipo = document.getElementById("tipo").value
 
     const ingredientes = document
-    .getElementById("ingredientes")
-    .value
-    .split(",")
-    .map(i => i.trim())
+      .getElementById("ingredientes")
+      .value
+      .split(",")
+      .map(i => i.trim())
 
-    const veg = document.getElementById("veg").checked
+    const recetaTexto = document.getElementById("recipe-steps").value // Joaquin: Pasos de la receta para guardarlo en localStorage
+
+    // Joaquin: Modificacion Grande
+    // Cambie la clase "veg" por "caracteristicas" para que luego funcione para los filtros
+    // y tener la posibilidad de crear mas opciones segun las caracteristicas que querramos
+    const caracteristicas = [];
+
+    if (document.getElementById("vegetariano").checked) {
+        caracteristicas.push("Vegetariano");
+    }
+
+    if (document.getElementById("vegano").checked) {
+        caracteristicas.push("Vegano");
+    }
+
+    if (document.getElementById("sin-tacc").checked) {
+        caracteristicas.push("Sin TACC");
+    }
+
+    // Joaquin: funciona igual que ingredientes pero con un salto de linea
+    const receta = recetaTexto
+        .split("\n")
+        .map(step => step.trim())
+        .filter(step => step !== "");
 
     const dificultadSeleccionada =
     document.querySelector('input[name="dif"]:checked')
@@ -111,7 +143,8 @@ else {
       nombre,
       tipo,
       ingredientes,
-      veg,
+      receta,
+      caracteristicas,
       dificultad
   }
 

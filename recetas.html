@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <button id="menu-toggle">☰</button>
+            <h1>Recetario</h1>
+            <!-- Boton para dark mode, agregado por JP-->
+            <button id="theme-toggle" class="theme-toggle">
+            🌙
+            </button>
+        </div>
+    </header>
+
+    <nav class="side-menu" id="side-menu">
+        <a href="index.html">Inicio</a>
+        <a href="planner1.html">Planificador</a>
+        <a href="compras.html">Compras</a>
+        <a href="recetas.html">Recetas</a>
+    </nav>
+    <main class="container">
+        <!-- FILTRO  -->
+        <form id="filtro-caracteristicas">
+            <label for="opciones">Filtro:</label>
+            <select id="opciones">
+                <option value="all">Todas</option>
+                <option value="Vegano">Vegano</option>
+                <option value="Vegetariano">Vegetariano</option>
+                <option value="Sin TACC">Sin TACC</option>
+            </select>
+
+            <button type="submit">Filtrar</button>
+
+        </form>
+
+        <!-- SECCION DINAMICA PARA AGREGAR RECETAS -->
+        <section class="recipes">    
+            <div id="recipes-container"></div>
+        </section>
+        
+        <!-- MODAL "POP UP" PARA MOSTAR RECETA COMPLETA -->
+        <article class="complete-recipe" id="complete-recipe">
+
+            <button class="btn btn-close-recipe">X</button>
+
+            <h2 id="recipe-title"></h2>
+
+            <p id="recipe-desc"></p>
+
+            <h3>Ingredientes</h3>
+            <ul id="recipe-ingredientes"></ul>
+
+            <h3>Pasos</h3>
+            <ul id="recipe-steps"></ul>
+
+            <button class="btn btn-close-recipe">Cerrar</button>
+
+            <button class="btn" id="add-recipe-to-list">Modificar</button>
+
+        </article>
+
+        <button id="btn-add-recipe" type="submit">+</button>
+
+    </main>
+    <nav class="bottom-nav">
+        <a href="index.html">Inicio</a>
+        <a href="planner1.html">Planificador</a>
+        <a href="compras.html">Compras</a>
+        <a href="recetas.html" class="active">Recetas</a>
+    </nav>
+    
+    <script src="js/storage.js"></script>
+    <script src="js/formulario.js" defer></script>
+    <script src="js/recipes.js" defer></script>
+    
+</body>
+</html>

@@ -14,6 +14,10 @@
   <div class="header-left">
     <button id="menu-toggle">☰</button>
     <h1>Planificador de comidas</h1>
+    <!-- Boton para dark mode, agregado por JP-->
+    <button id="theme-toggle" class="theme-toggle">
+      🌙
+    </button>
   </div>
 </header>
 
@@ -38,7 +42,17 @@
 
       <div class="card">
         <p>Vegetarianas</p>
-        <h3 id="stat-veg">0</h3>
+        <h3 id="stat-vegetariana">0</h3> <!--Joaquin: Agrego este cambio para las cards separadas por caracteristicas-->
+      </div>
+
+      <div class="card">
+        <p>Veganas</p>
+        <h3 id="stat-veganas">0</h3>
+      </div>
+
+      <div class="card">
+        <p>Sin Tacc</p>
+        <h3 id="stat-sin-tacc">0</h3>
       </div>
 
       <div class="card">
@@ -110,20 +124,23 @@
 
 </main>
 
-<!-- NAV -->
-<nav class="bottom-nav">
-  <a href="index.html">Inicio</a>
-  <a href="planner1.html" class="active">Planificador</a>
-  <a href="compras.html">Compras</a>
-</nav>
+  <!-- NAV -->
+  <nav class="bottom-nav">
+    <a href="index.html">Inicio</a>
+    <a href="planner1.html" class="active">Planificador</a>
+    <a href="compras.html">Compras</a>
+    <a href="recetas.html">Recetas</a>
+  </nav>
 
-<footer class="footer">
+  <footer class="footer">
 
-</footer>
-<script src="js/storage.js"></script>
-<script src="js/planner.js"></script>
-<script src="js/compras.js"></script>
-<script src="js/main.js"></script>
+  </footer>
+
+  <script src="js/storage.js"></script>
+  <script src="js/planner.js"></script>
+  <script src="js/compras.js"></script>
+  <script src="js/main.js"></script>
+  
 </body>
 
 </html>

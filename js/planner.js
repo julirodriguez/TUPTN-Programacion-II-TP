@@ -62,6 +62,8 @@ function actualizarStats() {
 
   let total = 0
   let vegetarianas = 0
+  let veganas = 0
+  let sinTacc = 0
   let ingredientes = 0
   let faciles = 0
 
@@ -69,7 +71,17 @@ function actualizarStats() {
     dia.forEach(comida => {
       total++
 
-      if (comida.veg) vegetarianas++
+      if (comida.caracteristicas?.includes("Vegetariano")) {
+          vegetarianas++;
+      }
+
+      if (comida.caracteristicas?.includes("Vegano")) {
+          veganas++;
+      }
+
+      if (comida.caracteristicas?.includes("Sin TACC")) {
+          sinTacc++;
+      }
 
       ingredientes += comida.ingredientes.length
 
@@ -78,7 +90,9 @@ function actualizarStats() {
   })
 
   document.getElementById("stat-total").textContent = total
-  document.getElementById("stat-veg").textContent = vegetarianas
+  document.getElementById("stat-vegetariana").textContent = vegetarianas
+  document.getElementById("stat-veganas").textContent = veganas
+  document.getElementById("stat-sin-tacc").textContent = sinTacc
   document.getElementById("stat-ing").textContent = ingredientes
   document.getElementById("stat-facil").textContent = faciles
 }
