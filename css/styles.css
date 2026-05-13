@@ -841,3 +841,39 @@ body.dark textarea {
 .unique-recipe {
   animation: fadeIn 0.7s ease;
 }
+
+/*Mejora de focus inputs(mejora para UX/UI) agregado por JP*/
+input:focus,
+select:focus,
+textarea:focus {
+
+  outline: none;
+
+  border: 2px solid #2C5F34;
+
+  box-shadow:
+    0 0 0 3px rgba(44, 95, 52, 0.25);
+
+  transform: scale(1.01);
+
+  transition:
+    border 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+body.dark input:focus,
+body.dark select:focus,
+body.dark textarea:focus {
+
+  border: 2px solid #66bb6a;
+
+  box-shadow:
+    0 0 0 3px rgba(102, 187, 106, 0.3);
+
+}
+
+input,
+select,
+textarea {
+  transition: all 0.2s ease;
+}
