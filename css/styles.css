@@ -821,3 +821,23 @@ body.dark textarea {
   color: white;
   border: 1px solid #444;
 }
+
+/*Agregue animacion fadeIn, para darle un toque mas moderno a la pagina. JP*/
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card,
+.day,
+.meal-card,
+.unique-recipe {
+  animation: fadeIn 0.7s ease;
+}
