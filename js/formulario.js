@@ -95,6 +95,10 @@ else {
 
     const data = getData()
 
+    if (!data.recetasPersonalizadas) {
+      data.recetasPersonalizadas = [];
+    }
+
     const nombre = document.getElementById("nombre").value
 
     const dia = document.getElementById("dia").value
@@ -151,6 +155,12 @@ else {
     // editar
     if (modoEdicion) {
       data.plan[diaEditar][indexEditar] = nuevaComida
+      // Joaquin: Agrego esto para que se me modifique tambien ne recetas cargadas
+       if (data.recetasPersonalizadas) {
+        const recetaIndex = data.recetasPersonalizadas.findIndex(receta => receta.nombre === data.plan[diaEditar][indexEditar].nombre)
+         if (recetaIndex !== -1) { data.recetasPersonalizadas[recetaIndex] = nuevaComida;
+        }
+      }
     }
 
     // crear
@@ -160,7 +170,15 @@ else {
         return
     }
 
-    data.plan[dia].push(nuevaComida)
+    data.plan[dia].push(nuevaComida);
+
+    const recetaPrecargada = form.dataset.precargada === "true";
+    
+    if (!recetaPrecargada) {
+        data.recetasPersonalizadas.push(nuevaComida);
+    }
+    
+    form.dataset.precargada = "false";
   }
 
     saveData(data)

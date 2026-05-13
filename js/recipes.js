@@ -13,10 +13,11 @@ async function getRecipes() {
 
         const jsonData = await response.json();
         const localStorageData = getData();
+        const jsonLength = jsonData.length;
+        window.jsonRecipesLength = jsonLength;
 
-        const recetasPlan = localStorageData?.plan
-            ? Object.values(localStorageData.plan).flat()
-            : [];
+        const recetasPlan =
+            localStorageData?.recetasPersonalizadas || [];
 
         data = [...jsonData, ...recetasPlan].map(receta => ({
 
@@ -90,9 +91,12 @@ if (filtroForm){
         );
 
         renderRecipes(filtradas);
-})};
+    }
+)};
 
 // MODAL: Mostrar receta completa a través del modal
+let currentRecipeIndex = null;
+
 if (recipesContainer){
     recipesContainer.addEventListener("click", (e) => {
 
@@ -104,7 +108,7 @@ if (recipesContainer){
         if (e.target.classList.contains("btn-open-recipe")) {
 
             const id = e.target.dataset.id;
-
+            currentRecipeIndex = id;
             const receta = data[id];
 
             recipeTitle.textContent = receta.nombre;
@@ -121,7 +125,8 @@ if (recipesContainer){
 
             modal.classList.add("show");
         }
-})};
+    }
+)};
 
 // Boton para el modal pop up del formulario
 const modalPopup = document.querySelector(".modal-loaded-recipes");
@@ -152,10 +157,17 @@ function renderLoadedRecipes(recetas) {
 
 if (loadedRecipesContainer){
     loadedRecipesContainer.addEventListener("click", (e) => {
-        if (
-            e.target.classList.contains("btn-use-recipe")
-        ) {
+
+        if (e.target.classList.contains("btn-use-recipe")) {
+
+            const form = document.getElementById("mealForm");
+
+            if (form) {
+                form.dataset.precargada = "true";
+            }
+
             const id = e.target.dataset.id;
+
             const receta = data[id];
 
             document.getElementById("nombre").value = receta.nombre;
@@ -174,6 +186,7 @@ if (loadedRecipesContainer){
     })
 };
 
+// Abrir modal
 if (btnOpenModal) {
     btnOpenModal.addEventListener("click", () => {
         modalPopup.classList.add("show");
@@ -181,6 +194,7 @@ if (btnOpenModal) {
     });
 }
 
+// Ocultar modal
 if (btnCloseModal) {
     btnCloseModal.addEventListener("click", () => {
         modalPopup.classList.remove("show");
@@ -194,18 +208,43 @@ btnClose.forEach((element) => {
     });
 });
 
-// renderizar recetas del localStorage
+// Obtener, Guardar y Borrar recetas personalizadas
+const btnModifyRecipe = document.getElementById("modify-recipe-off-list")
+const btnDeleteRecipe = document.getElementById("delete-recipe-off-list")
+
+// Falta hacer esto
+// function modifyPersonalizedRecipes() {}
 
 
-// Agregar receta
-function addRecipe() {
+const personalizedIndex = currentRecipeIndex - window.jsonRecipesLength;
 
-}
+btnDeleteRecipe.addEventListener("click", () => {
 
-const btnAddRecipe = document.getElementById("btn-add-recipe")
+    if (currentRecipeIndex === null) return;
 
+    // 8 recetas del JSON para calcular (de manera manual) el indice de las recetas personalizadas
+    const personalizedIndex = currentRecipeIndex - 8;
 
+    // Esto evita borrar recetas json
+    if (personalizedIndex < 0) {
+        alert("No podés eliminar recetas precargadas");
+        return;
+    }
 
-btnAddRecipe.addEventListener('click', function(e) {
-    
+    if (!confirm("¿Eliminar receta?")) return;
+
+    const storageData = getData();
+
+    const recetas = storageData.recetasPersonalizadas || [];
+
+    recetas.splice(personalizedIndex, 1);
+
+    storageData.recetasPersonalizadas = recetas;
+
+    saveData(storageData);
+
+    modal.classList.remove("show");
+
+    getRecipes();
+
 });
