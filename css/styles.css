@@ -122,7 +122,18 @@ body {
   cursor: pointer;
   transition: 0.2s;
 }
+/*Agregado por JP, boton para salir del pop up agregar comida. */
+.back-btn {
 
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-bottom: 20px;
+
+  text-decoration: none;
+
+}
 .primary {
   background: #2C5F34;
   color: white;
