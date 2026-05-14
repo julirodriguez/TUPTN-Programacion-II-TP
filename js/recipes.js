@@ -52,7 +52,8 @@ const btnClose = document.querySelectorAll(".btn-close-recipe");
 // Renderizar recetas de manera dinaica
 function renderRecipes(filterData) {
 
-    recipesContainer.innerHTML = filterData.map((receta, index) => `
+    recipesContainer.innerHTML = filterData.map((receta, index) =>
+    `
         <div class="unique-recipe">
 
             <h3 id="recipe-title">${receta.nombre}</h3>
@@ -100,8 +101,8 @@ let currentRecipeIndex = null;
 if (recipesContainer){
     recipesContainer.addEventListener("click", (e) => {
 
-        const recipeTitle = document.getElementById("recipe-title");
-        const recipeDesc = document.getElementById("recipe-desc");
+        const recipeTitle = document.getElementById("recipe-title-popup");
+        const recipeDesc = document.getElementById("recipe-desc-popup");
         const recipeIng = document.getElementById("recipe-ingredientes");
         const recipeSteps = document.getElementById("recipe-steps");
 
@@ -112,9 +113,8 @@ if (recipesContainer){
             const receta = data[id];
 
             recipeTitle.textContent = receta.nombre;
-
-            recipeDesc.textContent = receta.caracteristicas.join(", ");
-
+            recipeDesc.textContent = receta.caracteristicas?.join(" • ") || "Sin características";
+            
             recipeIng.innerHTML = receta.ingredientes
                 .map(ing => `<li>${ing}</li>`)
                 .join("");
@@ -161,22 +161,17 @@ function renderLoadedRecipes(recetas) {
             <h4>Ingredientes</h4>
                 <ul>
                     ${receta.ingredientes.map(
-                        ingrediente => `
-                            <li>${ingrediente}</li>
-                        `
+                        ingrediente => `<li>${ingrediente}</li>`
                     ).join("")}
+
                 </ul><br>
 
                 <h4>Pasos</h4>
-
                 <ol>
                     ${receta.pasos.map(
-                        paso => `
-                            <li>${paso}</li>
-                        `
+                        paso => `<li>${paso}</li>`
                     ).join("")}
                 </ol>
-
             </div>
         </div>`).join("");
 }
