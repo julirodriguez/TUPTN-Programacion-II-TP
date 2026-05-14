@@ -9,10 +9,17 @@
 <body>
     <header class="header">
         <div class="header-left">
-            <button id="menu-toggle">☰</button>
+            <button
+                id="menu-toggle"
+                aria-label="Abrir menú">
+
+                ☰
+
+            </button>
             <h1>Recetario</h1>
             <!-- Boton para dark mode, agregado por JP-->
-            <button id="theme-toggle" class="theme-toggle">
+            <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+
             🌙
             </button>
         </div>
@@ -47,7 +54,7 @@
         <!-- MODAL "POP UP" PARA MOSTAR RECETA COMPLETA -->
         <article class="complete-recipe" id="complete-recipe">
 
-            <button class="btn btn-close-recipe">X</button>
+            <button class="btn" id="close-loaded-recipes" type="button" aria-label="Cerrar recetas">
 
             <h2 id="recipe-title"></h2>
 

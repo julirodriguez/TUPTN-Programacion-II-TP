@@ -6,16 +6,24 @@
     <title>Agregar comida</title>
     <link rel="icon" type="image/png" href="assets/icons/favicon.png">
     <link rel="stylesheet" href="css/styles.css">
+    
 </head>
 
 <body>
 
 <header class="header">
   <div class="header-left">
-    <button id="menu-toggle">☰</button>
+    <button
+        id="menu-toggle"
+        aria-label="Abrir menú">
+
+        ☰
+
+    </button>
     <h1 id="form-title">Agregar comida</h1>
     <!-- Boton para dark mode, agregado por JP-->
-    <button id="theme-toggle" class="theme-toggle">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+
       🌙
     </button>
   </div>
@@ -29,18 +37,27 @@
 </nav>
 
 <main class="container">
+    <!-- Boton de volver al planner, agregado por JP-->
+    <button
+        type="button"
+        class="btn secondary back-btn"
+        onclick="history.back()">
+
+        ← Volver
+
+    </button>
     <form id="mealForm" class="form-container">
 
         <!-- Nombre -->
         <div class="form-group">
-            <label>Nombre de la comida</label>
+        <label for="nombre">Nombre de la comida</label>
             <input type="text" id="nombre">
             <span class="error">Campo obligatorio</span>
         </div>
 
         <!-- Día --> 
         <div class="form-group"> 
-            <label>Día</label> 
+            <label for="dia">"Día</label> 
             <select id="dia"> 
                 <option value="">Seleccionar</option> 
                 <option value="lunes">Lunes</option> 
@@ -56,7 +73,7 @@
 
         <!-- Tipo -->
         <div class="form-group"> 
-            <label>Tipo</label> 
+            <label for="tipo">Tipo</label> 
             <select id="tipo"> 
                 <option value="">Seleccionar</option> 
                 <option value="Desayuno">Desayuno</option> 
@@ -68,14 +85,14 @@
 
         <!-- Ingredientes -->
         <div class = "form-group">
-            <label>Ingredientes (separados por coma)</label>
+            <label for="ingredientes">Ingredientes (separados por coma)</label>
             <input type="text" id="ingredientes">
             <span class="error">Ingresá al menos un ingrediente</span>
         </div>
 
         <!--Pasos de la receta Joaquin: Agrege los pasos para la recetas-->
         <div class = "form-group">
-            <label>Pasos</label>
+            <label for="pasos">Pasos</label>
             <textarea id="recipe-steps"></textarea>
         </div>
 
@@ -97,7 +114,7 @@
 
         <!-- Radio -->
         <div class="form-group">
-            <label>Dificultad</label>
+            <label for="dificultad">Dificultad</label>
 
             <label><input type="radio" name="dif" value="facil">Fácil</label>
             <label><input type="radio" name="dif" value="media">Media</label>
