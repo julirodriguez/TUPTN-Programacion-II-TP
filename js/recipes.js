@@ -135,29 +135,61 @@ const btnCloseModal = document.getElementById("close-loaded-recipes");
 const loadedRecipesContainer = document.getElementById("loaded-recipes-container");
 
 function renderLoadedRecipes(recetas) {
-    loadedRecipesContainer.innerHTML = recetas.map(
-        (receta, index) => `
 
-        <div class="loaded-recipe-card">
+    loadedRecipesContainer.innerHTML =
+        recetas.map((receta, index) => `
+
+        <div class="card loaded-recipe-card">
 
             <h3>${receta.nombre}</h3>
-            
+
             <p>
                 ${receta.caracteristicas?.join(", ") || ""}
             </p>
 
-            <button class="btn-use-recipe" data-id="${index}">
+            <button class="btn btn-see-recipe" data-id="${index}">
+                Ver receta
+            </button>
+
+            <button class="btn btn-use-recipe" data-id="${index}">
                 Usar receta
             </button>
 
-        </div>
+            <!-- DETALLE -->
+            <div class="recipe-details" id="recipe-details-${index}" style="display: none;"><br>
 
-    `).join("");
+            <h4>Ingredientes</h4>
+                <ul>
+                    ${receta.ingredientes.map(
+                        ingrediente => `
+                            <li>${ingrediente}</li>
+                        `
+                    ).join("")}
+                </ul><br>
+
+                <h4>Pasos</h4>
+
+                <ol>
+                    ${receta.pasos.map(
+                        paso => `
+                            <li>${paso}</li>
+                        `
+                    ).join("")}
+                </ol>
+
+            </div>
+        </div>`).join("");
 }
 
 if (loadedRecipesContainer){
     loadedRecipesContainer.addEventListener("click", (e) => {
+        if (e.target.classList.contains("btn-see-recipe")) {
+            const id = e.target.dataset.id;
 
+            const details =document.getElementById(`recipe-details-${id}`);
+
+            details.style.display = details.style.display === "none" ? "block" : "none";
+        }
         if (e.target.classList.contains("btn-use-recipe")) {
 
             const form = document.getElementById("mealForm");
@@ -218,33 +250,33 @@ const btnDeleteRecipe = document.getElementById("delete-recipe-off-list")
 
 const personalizedIndex = currentRecipeIndex - window.jsonRecipesLength;
 
-btnDeleteRecipe.addEventListener("click", () => {
+if (btnDeleteRecipe) {
+    btnDeleteRecipe.addEventListener("click", () => {
 
-    if (currentRecipeIndex === null) return;
+        if (currentRecipeIndex === null) return;
 
-    // 8 recetas del JSON para calcular (de manera manual) el indice de las recetas personalizadas
-    const personalizedIndex = currentRecipeIndex - 8;
+        // 8 recetas del JSON para calcular (de manera manual) el indice de las recetas personalizadas
+        const personalizedIndex = currentRecipeIndex - 8;
 
-    // Esto evita borrar recetas json
-    if (personalizedIndex < 0) {
-        alert("No podés eliminar recetas precargadas");
-        return;
-    }
+        // Esto evita borrar recetas json
+        if (personalizedIndex < 0) {
+            alert("No podés eliminar recetas precargadas");
+            return;
+        }
 
-    if (!confirm("¿Eliminar receta?")) return;
+        if (!confirm("¿Eliminar receta?")) return;
 
-    const storageData = getData();
+        const storageData = getData();
 
-    const recetas = storageData.recetasPersonalizadas || [];
+        const recetas = storageData.recetasPersonalizadas || [];
 
-    recetas.splice(personalizedIndex, 1);
+        recetas.splice(personalizedIndex, 1);
 
-    storageData.recetasPersonalizadas = recetas;
+        storageData.recetasPersonalizadas = recetas;
 
-    saveData(storageData);
+        saveData(storageData);
 
-    modal.classList.remove("show");
+        modal.classList.remove("show");
 
-    getRecipes();
-
-});
+        getRecipes();
+})};

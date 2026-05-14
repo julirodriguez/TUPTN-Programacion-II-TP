@@ -33,6 +33,7 @@ else {
 
     document.getElementById("vegano").checked =
       comida.caracteristicas.includes("Vegano");
+      
 
     document.getElementById("sin-tacc").checked =
       comida.caracteristicas.includes("Sin TACC");
@@ -45,41 +46,76 @@ else {
   }
 
   inputs.forEach(input => {
-    input.addEventListener("input", () => validarCampo(input))
-  })
+    // texto, textarea, etc
+    input.addEventListener("input", () => {
+        validarCampo(input);
+    });
+
+    // radios y checkboxes
+    input.addEventListener("change", () => {
+        validarCampo(input);
+    });
+  });
 
   function validarCampo(input) {
-    const error = input.parentElement.querySelector(".error")
 
-    if (input.type === "checkbox") return true
-
+    // VALIDAR RADIOS
     if (input.name === "dif") {
-      const checked = document.querySelector('input[name="dif"]:checked')
+
+      const checked = document.querySelector(
+        'input[name="dif"]:checked'
+      );
+
+      // contenedor del grupo radio
+      const formGroup = input.closest(".form-group");
+
+      const error =
+        formGroup.querySelector(".error");
 
       if (!checked) {
-        if (error) error.style.display = "block"
-        return false
-      } else {
-        if (error) error.style.display = "none"
-        return true
+
+        if (error)
+          error.style.display = "block";
+
+        return false;
       }
+
+      if (error)
+        error.style.display = "none";
+
+      return true;
     }
 
-    if (!input.value) {
-      input.classList.add("error-input")
-      input.classList.remove("success")
-
-      if (error) error.style.display = "block"
-
-      return false
+    // CHECKBOXES
+    if (input.type === "checkbox") {
+      return true;
     }
 
-    input.classList.remove("error-input")
-    input.classList.add("success")
+    // errores normales
+    const error =
+      input.parentElement.querySelector(".error");
 
-    if (error) error.style.display = "none"
+    // VALIDACION TEXTO
+    if (!input.value.trim()) {
 
-    return true
+      input.classList.add("error-input");
+
+      input.classList.remove("success");
+
+      if (error)
+        error.style.display = "block";
+
+      return false;
+    }
+
+    input.classList.remove("error-input");
+
+    input.classList.add("success");
+
+    if (error)
+      error.style.display = "none";
+
+    return true;
   }
 
   form.addEventListener("submit", (e) => {
@@ -113,17 +149,25 @@ else {
 
     const recetaTexto = document.getElementById("recipe-steps").value // Joaquin: Pasos de la receta para guardarlo en localStorage
 
-    // Joaquin: Modificacion Grande
-    // Cambie la clase "veg" por "caracteristicas" para que luego funcione para los filtros
-    // y tener la posibilidad de crear mas opciones segun las caracteristicas que querramos
+    // Caracteristicas de las comidas
     const caracteristicas = [];
 
-    if (document.getElementById("vegetariano").checked) {
-        caracteristicas.push("Vegetariano");
-    }
+    const veganoInput = document.getElementById("vegano");
 
-    if (document.getElementById("vegano").checked) {
-        caracteristicas.push("Vegano");
+    const vegetarianoInput = document.getElementById("vegetariano");
+
+    veganoInput.addEventListener("change", () => {
+      if (veganoInput.checked) {
+          vegetarianoInput.checked = true;
+          console.log("a")
+      }
+    });
+
+    if (vegano) {
+      caracteristicas.push("Vegano");
+      caracteristicas.push("Vegetariano");
+    } else if (vegetariano) {
+      caracteristicas.push("Vegetariano");
     }
 
     if (document.getElementById("sin-tacc").checked) {
@@ -136,8 +180,7 @@ else {
         .map(step => step.trim())
         .filter(step => step !== "");
 
-    const dificultadSeleccionada =
-    document.querySelector('input[name="dif"]:checked')
+    const dificultadSeleccionada = document.querySelector('input[name="dif"]:checked')
 
     const dificultad = dificultadSeleccionada
       ? dificultadSeleccionada.value
@@ -157,11 +200,14 @@ else {
       data.plan[diaEditar][indexEditar] = nuevaComida
       // Joaquin: Agrego esto para que se me modifique tambien ne recetas cargadas
        if (data.recetasPersonalizadas) {
-        const recetaIndex = data.recetasPersonalizadas.findIndex(receta => receta.nombre === data.plan[diaEditar][indexEditar].nombre)
-         if (recetaIndex !== -1) { data.recetasPersonalizadas[recetaIndex] = nuevaComida;
+        const comidaVieja = data.plan[diaEditar][indexEditar];
+
+        data.plan[diaEditar][indexEditar] = nuevaComida;
+
+        const recetaIndex = data.recetasPersonalizadas.findIndex(receta => receta.nombre === comidaVieja.nombre)
         }
       }
-    }
+    
 
     // crear
     else {
