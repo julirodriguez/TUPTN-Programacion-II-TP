@@ -1035,3 +1035,151 @@ body.dark textarea:focus {
     0 0 0 3px rgba(102, 187, 106, 0.3);
 
 }
+
+/*Mejoras a Inicio*/
+#veg-bar {
+  background: #66bb6a;
+}
+
+#vegan-bar {
+  background: #43a047;
+}
+
+#tacc-bar {
+  background: #81c784;
+}
+
+body.dark .progress {
+  background: #333;
+}
+
+
+
+.circle {
+
+  width: 120px;
+  height: 120px;
+
+  border-radius: 50%;
+
+  background: #2C5F34;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0 auto 20px;
+
+}
+@keyframes fadeUp {
+
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+.meal-card,
+.card,
+.nutrition {
+
+  animation: fadeUp 0.4s ease;
+
+}
+.meals {
+
+  margin-top: 30px;
+
+}
+
+.section-header h3 {
+
+  font-size: 28px;
+  margin-bottom: 20px;
+
+}
+
+.meal-card {
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+
+  padding: 18px;
+
+  margin-bottom: 16px;
+
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: 18px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+}
+
+.meal-card:hover {
+
+  transform: translateY(-3px);
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+
+}
+
+.meal-info h4 {
+
+  font-size: 22px;
+  margin-bottom: 6px;
+
+}
+
+.meal-info p {
+
+  color: gray;
+
+  font-size: 15px;
+
+  line-height: 1.5;
+
+}
+
+.meal-info small {
+
+  display: inline-block;
+
+  margin-top: 8px;
+
+  padding: 6px 10px;
+
+  border-radius: 999px;
+
+  background: rgba(44,95,52,0.12);
+
+  color: #2C5F34;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+}
+
+body.dark .meal-info small {
+
+  background: rgba(255,255,255,0.1);
+
+  color: #9be7a7;
+
+}
