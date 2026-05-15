@@ -53,22 +53,22 @@
         
         <!-- MODAL "POP UP" PARA MOSTAR RECETA COMPLETA -->
         <article class="complete-recipe" id="complete-recipe">
+            <div class="recipe-modal-content">
+                <button class="btn" id="close-loaded-recipes" type="button" aria-label="Cerrar recetas"></button>
 
-            <button class="btn" id="close-loaded-recipes" type="button" aria-label="Cerrar recetas"></button>
+                <h2 id="recipe-title-popup"></h2>
 
-            <h2 id="recipe-title-popup"></h2>
+                <p id="recipe-desc-popup"></p>
 
-            <p id="recipe-desc-popup"></p>
+                <h3>Ingredientes</h3>
+                <ul id="recipe-ingredientes"></ul>
 
-            <h3>Ingredientes</h3>
-            <ul id="recipe-ingredientes"></ul>
+                <h3>Pasos</h3>
+                <ul id="recipe-steps"></ul>
 
-            <h3>Pasos</h3>
-            <ul id="recipe-steps"></ul>
-
-            <button class="btn btn-close-recipe" type="button">Cerrar</button>
-            <button class="btn btn-delete-recipe" id="delete-recipe-off-list" type="button">Eliminar</button>
-
+                <button class="btn btn-close-recipe" type="button">Cerrar</button>
+                <button class="btn btn-delete-recipe" id="delete-recipe-off-list" type="button">Eliminar</button>
+            </div>
         </article>
     </main>
     <nav class="bottom-nav">

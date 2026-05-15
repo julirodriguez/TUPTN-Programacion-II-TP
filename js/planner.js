@@ -1,9 +1,3 @@
-//const recetas = {
-//  "Desayuno": ["café", "pan", "manteca"],
-//  "Almuerzo": ["pollo", "arroz"],
-//  "Cena": ["lechuga", "tomate"]
-//};
-
 function renderizarPlanner() {
   const data = getData()
   const plan = data.plan

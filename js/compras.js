@@ -57,9 +57,27 @@ function mostrarCompras() {
 
     const checkbox = label.querySelector("input");
 
+    const data = getData()
+
+    if (!data.comprasCheck) {
+      data.comprasCheck = {}
+    }
+
+    // restaurar estado guardado
+    checkbox.checked = data.comprasCheck[ingrediente] || false
+
+    if (checkbox.checked) {
+      label.classList.add("done")
+    }
+
     checkbox.addEventListener("change", () => {
-      label.classList.toggle("done", checkbox.checked);
-    });
+      label.classList.toggle("done", checkbox.checked)
+
+      // guardar estado
+      data.comprasCheck[ingrediente] = checkbox.checked
+
+      saveData(data)
+    })
 
     list.appendChild(label);
   });

@@ -275,3 +275,15 @@ if (btnDeleteRecipe) {
 
         getRecipes();
 })};
+
+// cerrar modal al hacer click afuera
+
+window.addEventListener("click", (e) => {
+    // si el modal no esta abierto no hace nada 
+    if (!modal.classList.contains("show")) return
+
+    // si el click fue sobre el fondo o modal
+    if (e.target === modal) {
+        modal.classList.remove("show")
+    }
+})

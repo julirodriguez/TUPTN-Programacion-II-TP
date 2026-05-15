@@ -489,7 +489,9 @@ select:disabled {
 /* CONTENEDOR PRINCIPAL DE RECETAS */
 #recipes-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+  grid-template-columns: repeat(3, 1fr);
+
   gap: 20px;
 }
 
@@ -497,35 +499,86 @@ select:disabled {
 .unique-recipe {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  justify-content: space-between;
 
-  padding: 15px;
+  gap: 14px;
 
-  border: 2px solid var(--primary);
-  border-radius: 10px;
+  min-height: 180px;
 
-  background-color: var(--card);
-  color: var(--text);
+  padding: 20px;
 
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
 
-  text-align: center;
+  background: var(--card2);
+
+  border: 1px solid var(--border);
+
+  backdrop-filter: blur(8px);
+
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+
+  animation: fadeIn 0.7s ease;
 }
 
-/*BOTON VER RECETA*/
-.btn-open-recipe{
-  background-color: var(--primary);
-  color: var(--text);
+.unique-recipe:hover {
+
+  transform:
+    translateY(-6px)
+    scale(1.02);
+
+  box-shadow:
+    0 12px 24px rgba(0,0,0,0.14);
+
 }
 
-.btn-close-recipe{
-  background-color: var(--primary);
+.unique-recipe h3 {
+
+  font-size: 25px;
+
   color: var(--text);
+
+  margin-bottom: 10px;
 }
 
-.add-recipe-to-list{
-  background-color: var(--primary);
-  color: var(--text);
+.unique-recipe p {
+  margin-bottom: 16px;
+}
+
+/* botones receta */
+.btn-open-recipe,
+.btn-close-recipe,
+.add-recipe-to-list {
+
+  background: var(--primary);
+
+  color: white;
+
+  border: none;
+
+  border-radius: 12px;
+
+  padding: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.btn-open-recipe:hover,
+.btn-close-recipe:hover,
+.add-recipe-to-list:hover {
+
+  transform: translateY(-2px);
+
+  opacity: 0.92;
 }
 
 /* BOTON AGREGAR RECETA */
@@ -548,12 +601,23 @@ select:disabled {
   display: none;
 
   position: fixed;
+  inset: 0;
 
-  top: 50%;
-  left: 50%;
+  background: rgba(0, 0, 0, 0.45);
 
-  transform: translate(-50%, -50%);
+  justify-content: center;
+  align-items: center;
 
+  z-index: 1000;
+}
+
+/* MODAL ACTIVO */
+.complete-recipe.show {
+  display: flex;
+}
+
+/* CAJA INTERNA */
+.recipe-modal-content {
   width: 90%;
   max-width: 600px;
   max-height: 80vh;
@@ -562,18 +626,11 @@ select:disabled {
 
   padding: 25px;
 
-  border-radius: 10px;
+  border-radius: 16px;
 
   background-color: var(--bg);
 
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-
-  z-index: 1000;
-}
-
-/* MODAL ACTIVO */
-.complete-recipe.show {
-  display: block;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
 
 /* TITULOS DEL MODAL */
@@ -800,6 +857,10 @@ body.dark .empty-box img {
   .card h3 {
     font-size: 28px;
   }
+
+  #recipes-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 
@@ -846,6 +907,10 @@ body.dark .empty-box img {
   .day {
     min-height: auto;
   }
+
+  #recipes-container {
+    grid-template-columns: 1fr;
+  }
 }
 /*Modo claro oscuro JP*/
 /*tema claro*/ 
@@ -854,7 +919,7 @@ body.dark .empty-box img {
   --card: #ffffff;
   --card2: #ffffff;
   --text: #222;
-  --primary: #4caf50;
+  --primary: #2C5F34;
   --border: #ddd;
 }
 
@@ -864,7 +929,7 @@ body.dark {
   --card: #1e1e1e;
   --card2: #2f2e2e;
   --text: #f5f5f5;
-  --primary: #66bb6a;
+  --primary: #2C5F34;
   --border: #333;
   background:
     linear-gradient(
