@@ -47,3 +47,42 @@ Adaptado para:
 - LocalStorage
 - Flexbox
 - CSS Grid
+
+## Screenshots
+
+# Responsive mobile
+
+![Vista mobile](assets/screenshots/mobile.png)
+
+![Vista mobile](assets/screenshots/mobile1.png)
+
+![Vista mobile](assets/screenshots/mobile2.png)
+
+![Vista mobile](assets/screenshots/mobile3.png)
+
+![Vista mobile](assets/screenshots/mobile4.png)
+
+
+## Inicio
+
+![Inicio](assets/screenshots/inicio-tc.png)
+
+![Inicio](assets/screenshots/inicio-to.png)
+
+### Planificador
+
+![Planner](assets/screenshots/planificador-tc.png)
+![Planner](assets/screenshots/planificador-to.png)
+
+#### Formulario
+
+![Formulario](assets/screenshots/formulario-tc.png)
+
+##### Compras
+
+![Compras](assets/screenshots/compras-to.png)
+
+###### Recetas
+
+![Recetas](assets/screenshots/recetas-to.png)
+
