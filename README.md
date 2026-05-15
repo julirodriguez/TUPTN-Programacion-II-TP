@@ -69,20 +69,20 @@ Adaptado para:
 
 ![Inicio](assets/screenshots/inicio-to.png)
 
-### Planificador
+## Planificador
 
 ![Planner](assets/screenshots/planificador-tc.png)
 ![Planner](assets/screenshots/planificador-to.png)
 
-#### Formulario
+## Formulario
 
 ![Formulario](assets/screenshots/formulario-tc.png)
 
-##### Compras
+## Compras
 
 ![Compras](assets/screenshots/compras-to.png)
 
-###### Recetas
+## Recetas
 
 ![Recetas](assets/screenshots/recetas-to.png)
 
