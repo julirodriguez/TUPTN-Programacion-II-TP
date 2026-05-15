@@ -82,9 +82,17 @@ function renderMeals() {
                 <br><br><h3>Comidas del día</h3>
             </div>
 
-            <p class="empty-meals">
-                No hay recetas cargadas para el día de hoy.
-            </p>
+            <div class="empty-box">
+
+                <p>
+                     No hay comidas cargadas para hoy 🍽️
+                </p>
+
+                <a href="formulario.html" class="add-meal">
+                     + Agregar comida
+                </a>
+
+            </div>
         `;
 
         return;
@@ -120,3 +128,22 @@ function renderMeals() {
 const meals = getData().plan?.[getTodayKey()] || [];
 
 renderMeals();
+
+const welcomeText = document.getElementById("welcome-text");
+
+if (welcomeText) {
+
+    const hour = new Date().getHours();
+
+    if (hour < 12) {
+        welcomeText.textContent = "Buen día 👋";
+    }
+
+    else if (hour < 20) {
+        welcomeText.textContent = "Buenas tardes ☀️";
+    }
+
+    else {
+        welcomeText.textContent = "Buenas noches 🌙";
+    }
+}

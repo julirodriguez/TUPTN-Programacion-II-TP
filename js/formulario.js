@@ -150,29 +150,25 @@ else {
     const recetaTexto = document.getElementById("recipe-steps").value // Joaquin: Pasos de la receta para guardarlo en localStorage
 
     // Caracteristicas de las comidas
-    const caracteristicas = [];
+      const caracteristicas = [];
 
-    const veganoInput = document.getElementById("vegano");
+      const veganoInput = document.getElementById("vegano");
+      const vegetarianoInput = document.getElementById("vegetariano");
+      const sinTaccInput = document.getElementById("sin-tacc");
 
-    const vegetarianoInput = document.getElementById("vegetariano");
-
-    veganoInput.addEventListener("change", () => {
+      // Si es vegano → automáticamente vegetariano
       if (veganoInput.checked) {
-          vegetarianoInput.checked = true;
-          console.log("a")
+          caracteristicas.push("Vegano");
+          caracteristicas.push("Vegetariano");
       }
-    });
+      else if (vegetarianoInput.checked) {
+          caracteristicas.push("Vegetariano");
+      }
 
-    if (vegano) {
-      caracteristicas.push("Vegano");
-      caracteristicas.push("Vegetariano");
-    } else if (vegetariano) {
-      caracteristicas.push("Vegetariano");
-    }
-
-    if (document.getElementById("sin-tacc").checked) {
-        caracteristicas.push("Sin TACC");
-    }
+      if (sinTaccInput.checked) {
+          caracteristicas.push("Sin TACC");
+      }
+      
 
     // Joaquin: funciona igual que ingredientes pero con un salto de linea
     const receta = recetaTexto
