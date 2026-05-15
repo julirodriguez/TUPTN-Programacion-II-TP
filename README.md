@@ -72,7 +72,7 @@ Adaptado para:
 ## Planificador
 
 ![Planner](assets/screenshots/planificador-tc.png)
-![Planner](assets/screenshots/planificador-to.png)
+![Planner](assets/screenshots/planificador-formulario-to.png)
 
 ## Formulario
 
@@ -80,7 +80,7 @@ Adaptado para:
 
 ## Compras
 
-![Compras](assets/screenshots/compras-to.png)
+![Compras](assets/screenshots/compras.to.png)
 
 ## Recetas
 
