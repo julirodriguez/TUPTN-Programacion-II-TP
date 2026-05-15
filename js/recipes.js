@@ -208,6 +208,8 @@ if (loadedRecipesContainer){
             document.getElementById("vegano").checked = receta.caracteristicas.includes("Vegano");
 
             document.getElementById("sin-tacc").checked = receta.caracteristicas.includes("Sin TACC");
+        
+            modalPopup.classList.remove("show");
         }
 
     })
@@ -285,5 +287,14 @@ window.addEventListener("click", (e) => {
     // si el click fue sobre el fondo o modal
     if (e.target === modal) {
         modal.classList.remove("show")
+    }
+})
+
+window.addEventListener("click", (e) => {
+
+    if (!modalPopup.classList.contains("show")) return;
+
+    if (e.target === modalPopup) {
+        modalPopup.classList.remove("show")
     }
 })

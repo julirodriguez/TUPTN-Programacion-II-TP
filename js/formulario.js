@@ -13,6 +13,13 @@ else {
 
   const modoEdicion = diaEditar !== null && indexEditar !== null
 
+  const diaSelect = document.getElementById('dia')
+
+  // autoseleccionar dia
+  if (diaEditar && !modoEdicion) {
+    diaSelect.value = diaEditar
+  }
+
   if (modoEdicion) {
     const data = getData()
 
