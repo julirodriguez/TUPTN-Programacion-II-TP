@@ -1,5 +1,3 @@
-const localStorageData = getData();
-
 let data = [];
 
 async function getRecipes() {
@@ -16,8 +14,7 @@ async function getRecipes() {
         const jsonLength = jsonData.length;
         window.jsonRecipesLength = jsonLength;
 
-        const recetasPlan =
-            localStorageData?.recetasPersonalizadas || [];
+        const recetasPlan = localStorageData?.recetasPersonalizadas || [];
 
         data = [...jsonData, ...recetasPlan].map(receta => ({
 

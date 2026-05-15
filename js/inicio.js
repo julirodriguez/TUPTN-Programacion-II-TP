@@ -88,8 +88,8 @@ function renderMeals() {
                      No hay comidas cargadas para hoy 🍽️
                 </p>
 
-                <a href="formulario.html" class="add-meal">
-                     + Agregar comida
+                <a href="formulario.html?dia=${today}" class="add-meal">
+                    + Agregar comida
                 </a>
 
             </div>

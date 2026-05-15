@@ -1,23 +1,30 @@
 const form = document.getElementById("mealForm")
 
+
 if (!form) {
   console.log("Formulario no encontrado")
 }
 else {
-  const inputs = form.querySelectorAll("input, select")
+  const inputs = form.querySelectorAll("input, select");
 
-  const params = new URLSearchParams(window.location.search)
+  const params = new URLSearchParams(window.location.search);
 
-  const diaEditar = params.get("dia")
-  const indexEditar = params.get("index")
+  const diaURL = params.get("dia");
+  const indexEditar = params.get("index");
 
-  const modoEdicion = diaEditar !== null && indexEditar !== null
+  // modo edición
+  const modoEdicion =
+    diaURL !== null && indexEditar !== null;
 
-  const diaSelect = document.getElementById('dia')
+  // mostrar día en pantalla
+  const selectedDay =
+    document.getElementById("selected-day");
 
-  // autoseleccionar dia
-  if (diaEditar && !modoEdicion) {
-    diaSelect.value = diaEditar
+  if (selectedDay && diaURL) {
+
+    selectedDay.textContent =
+      diaURL.charAt(0).toUpperCase() +
+      diaURL.slice(1);
   }
 
   if (modoEdicion) {
@@ -25,12 +32,11 @@ else {
 
     document.getElementById("form-title").textContent = "Editar comida"
 
-    document.getElementById("dia").disabled = true
+    // document.getElementById("dia").disabled = true
 
     const comida = data.plan[diaEditar][indexEditar]
 
     document.getElementById("nombre").value = comida.nombre
-    document.getElementById("dia").value = diaEditar
     document.getElementById("tipo").value = comida.tipo
     document.getElementById("ingredientes").value = comida.ingredientes.join(", ")
     document.getElementById("recipe-steps").value = comida.receta.join("\n") // Joaquin: Agregue esto para los pasos de las recetas
@@ -54,18 +60,17 @@ else {
 
   inputs.forEach(input => {
     // texto, textarea, etc
-    input.addEventListener("input", () => {
-        validarCampo(input);
+    input.addEventListener("input", async () => {
+        await validarCampo(input);
     });
 
     // radios y checkboxes
-    input.addEventListener("change", () => {
-        validarCampo(input);
+    input.addEventListener("change", async () => {
+        await validarCampo(input);
     });
   });
 
-  function validarCampo(input) {
-
+  async function validarCampo(input) {
     // VALIDAR RADIOS
     if (input.name === "dif") {
 
@@ -99,8 +104,7 @@ else {
     }
 
     // errores normales
-    const error =
-      input.parentElement.querySelector(".error");
+    const error = input.parentElement.querySelector(".error");
 
     // VALIDACION TEXTO
     if (!input.value.trim()) {
@@ -115,6 +119,46 @@ else {
       return false;
     }
 
+    // Validacion para nombres repetidos
+    if (input.id === "nombre") {
+
+      const data = getData();
+
+      const recetas = data.recetasPersonalizadas || [];
+
+      // recetas del JSON
+      const response = await fetch("js/recetas.json");
+      const recetasJson = await response.json();
+
+      const todasLasRecetas = [
+        ...recetasJson,
+        ...recetas
+      ];
+
+      const nombreActual = input.value.trim().toLowerCase();
+
+      const nombreDuplicado = todasLasRecetas.some(
+        receta =>
+          receta.nombre.trim().toLowerCase() === nombreActual
+      );
+      const recetaPrecargada = form.dataset.precargada === "true";
+      // evitar conflicto con el modo edicion
+      
+      if (nombreDuplicado && !modoEdicion && !recetaPrecargada ) {
+
+        input.classList.add("error-input");
+
+        input.classList.remove("success");
+
+        if (error) {
+          error.textContent = "Ya existe una receta con ese nombre";
+          error.style.display = "block";
+        }
+
+        return false;
+      }
+    }
+
     input.classList.remove("error-input");
 
     input.classList.add("success");
@@ -125,13 +169,23 @@ else {
     return true;
   }
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault()
 
     let valido = true
+    for (const input of inputs) {
+
+      const resultado = await validarCampo(input);
+
+      if (!resultado) {
+        valido = false;
+      }
+    }
+
+    if (!valido) return;
 
     inputs.forEach(input => {
-      if (!validarCampo(input)) valido = false
+      if (!(validarCampo(input))) valido = false
     })
 
     if (!valido) return
@@ -144,7 +198,7 @@ else {
 
     const nombre = document.getElementById("nombre").value
 
-    const dia = document.getElementById("dia").value
+    const dia = diaURL;
 
     const tipo = document.getElementById("tipo").value
 
